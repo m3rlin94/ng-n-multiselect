@@ -2,5 +2,10 @@
   <div>
     <app-listitem [option]="selectAll"></app-listitem>
     <app-listitem [option]="selectNone"></app-listitem>
+
+    <app-listitem
+      *ngFor="let option of optionsList"
+      [option]="option"
+    ></app-listitem>
   </div>
 </div>

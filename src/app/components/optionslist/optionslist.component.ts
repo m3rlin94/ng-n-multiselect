@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Option } from 'src/app/models/Option';
 
 @Component({
@@ -7,6 +7,7 @@ import { Option } from 'src/app/models/Option';
   styleUrls: ['./optionslist.component.scss']
 })
 export class OptionslistComponent implements OnInit {
+  @Input() optionsList: Option[];
   selectAll: Option = {
     key: 'select-all',
     value: 'Select All'

@@ -31,6 +31,32 @@ export class MultiselectComponent implements OnInit {
       key: 'five',
       value: 'five',
       isSelected: false
+    },
+    {
+      key: 'six',
+      value: 'six',
+      isSelected: false
+    },
+    {
+      key: 'seven',
+      value: 'seven',
+      isSelected: false
+    },
+
+    {
+      key: 'eight',
+      value: 'eight',
+      isSelected: false
+    },
+    {
+      key: 'nine',
+      value: 'nine',
+      isSelected: false
+    },
+    {
+      key: 'ten',
+      value: 'ten',
+      isSelected: false
     }
   ];
   selectedOptionsList: Option[] = [
