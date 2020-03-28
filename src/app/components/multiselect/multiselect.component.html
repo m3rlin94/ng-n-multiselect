@@ -3,14 +3,14 @@
     <div class="col">
       <div class="tabs">
         <div class="tab">
-          <input type="checkbox" id="chck1" />
-
-          <label class="tab-label" for="chck1"
-            ><span *ngFor="let option of sOptions">{{ option }}</span></label
-          >
+          <input type="checkbox" id="check1" />
+          <label class="tab-label" for="check1">
+            <span *ngFor="let option of selectedOptionsList">
+              {{ option.value }}
+            </span>
+          </label>
           <div class="tab-content">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum,
-            reiciendis!
+            <app-optionslist></app-optionslist>
           </div>
         </div>
       </div>
