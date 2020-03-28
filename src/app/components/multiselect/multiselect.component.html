@@ -29,8 +29,18 @@
           </label>
           <div class="tab-content">
             <div class="list-header">
-              <app-listitem [option]="selectAll"></app-listitem>
-              <app-listitem [option]="selectNone"></app-listitem>
+              <button
+                [disabled]="selectedOptionsList.length === data.length"
+                (click)="onSelectAll(true)"
+              >
+                Select All
+              </button>
+              <button
+                [disabled]="selectedOptionsList.length === 0"
+                (click)="onSelectAll(false)"
+              >
+                Select None
+              </button>
             </div>
             <div>
               <app-listitem
