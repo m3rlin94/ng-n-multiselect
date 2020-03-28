@@ -13,12 +13,18 @@
               "
             ></div>
             <ng-template #showSelectedOptions>
-              <span *ngFor="let option of selectedOptionsList">
+              <span
+                *ngFor="
+                  let option of selectedOptionsList;
+                  index as index;
+                  trackBy: trackByOptionKey
+                "
+              >
                 {{ option.value }}
               </span>
             </ng-template>
             <ng-template #showLabelOnly>
-              <span>Label Only</span>
+              <span>Some default label</span>
             </ng-template>
           </label>
           <div class="tab-content">
@@ -26,7 +32,19 @@
               <app-listitem [option]="selectAll"></app-listitem>
               <app-listitem [option]="selectNone"></app-listitem>
             </div>
-            <app-optionslist [optionsList]="optionsList"></app-optionslist>
+            <div>
+              <app-listitem
+                *ngFor="
+                  let option of optionsList;
+                  index as index;
+                  trackBy: trackByOptionKey
+                "
+                [option]="option"
+                [index]="index"
+                (toggleOption)="toggleOption($event)"
+              >
+              </app-listitem>
+            </div>
           </div>
         </div>
       </div>

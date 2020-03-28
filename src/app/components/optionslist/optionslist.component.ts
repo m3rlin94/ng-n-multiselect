@@ -11,4 +11,8 @@ export class OptionslistComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  trackByOptionKey = (index: number, option: Option): string => {
+    return option.key;
+  };
 }
