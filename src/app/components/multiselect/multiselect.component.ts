@@ -70,7 +70,27 @@ export class MultiselectComponent implements OnInit {
     }
   ];
 
+  selectAll: Option = {
+    key: 'select-all',
+    value: 'Select All'
+  };
+  selectNone: Option = {
+    key: 'select-none',
+    value: 'Select None'
+  };
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  toggleOption = (option: Option, index: number): void => {
+    if (option.isSelected) {
+      this.selectedOptionsList = this.selectedOptionsList.filter(
+        aOption => aOption.key !== option.key
+      );
+    } else {
+      this.selectedOptionsList = [...this.selectedOptionsList, option];
+      this.optionsList[index].isSelected = true;
+    }
+  };
 }

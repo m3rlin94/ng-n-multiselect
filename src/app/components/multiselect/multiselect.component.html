@@ -5,11 +5,27 @@
         <div class="tab">
           <input type="checkbox" id="check1" />
           <label class="tab-label" for="check1">
-            <span *ngFor="let option of selectedOptionsList">
-              {{ option.value }}
-            </span>
+            <div
+              *ngIf="
+                selectedOptionsList.length > 0;
+                then showSelectedOptions;
+                else showLabelOnly
+              "
+            ></div>
+            <ng-template #showSelectedOptions>
+              <span *ngFor="let option of selectedOptionsList">
+                {{ option.value }}
+              </span>
+            </ng-template>
+            <ng-template #showLabelOnly>
+              <span>Label Only</span>
+            </ng-template>
           </label>
           <div class="tab-content">
+            <div class="list-header">
+              <app-listitem [option]="selectAll"></app-listitem>
+              <app-listitem [option]="selectNone"></app-listitem>
+            </div>
             <app-optionslist [optionsList]="optionsList"></app-optionslist>
           </div>
         </div>

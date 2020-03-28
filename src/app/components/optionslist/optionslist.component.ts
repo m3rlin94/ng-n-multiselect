@@ -8,14 +8,6 @@ import { Option } from 'src/app/models/Option';
 })
 export class OptionslistComponent implements OnInit {
   @Input() optionsList: Option[];
-  selectAll: Option = {
-    key: 'select-all',
-    value: 'Select All'
-  };
-  selectNone: Option = {
-    key: 'select-none',
-    value: 'Select None'
-  };
   constructor() {}
 
   ngOnInit(): void {}
