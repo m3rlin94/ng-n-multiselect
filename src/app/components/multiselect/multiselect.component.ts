@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Option } from 'src/app/models/Option';
 import { EmitType } from 'src/app/models/EmitOption';
+import { Search } from 'src/app/services/search/Search';
 @Component({
   selector: 'app-multiselect',
   templateUrl: './multiselect.component.html',
@@ -11,6 +12,7 @@ export class MultiselectComponent implements OnInit {
   selectedOptionsList: Option[] = [];
   selectAllList: Option[] = [];
   optionsList: Option[] = [];
+  searchInput: string;
 
   constructor() {}
 
@@ -63,6 +65,11 @@ export class MultiselectComponent implements OnInit {
       this.selectedOptionsList = [];
       this.optionsList = [...this.data];
     }
+  };
+
+  onSearch = (): void => {
+    const search = new Search();
+    console.log(search.getSearchResult(this.searchInput, this.optionsList));
   };
 
   trackByOptionKey = (index: number, option: Option): string => {
