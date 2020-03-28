@@ -1,9 +1,9 @@
-<div>
-  <input
-    type="checkbox"
+<div class="list-item">
+  <label class="checkbox-label" for="{{ option.key }}">{{ option.value }}
+    <input type="checkbox"
     id="{{ option.key }}"
     (change)="onToggle(option)"
-    [checked]="option.isSelected"
-  />
-  <label for="{{ option.key }}">{{ option.value }}</label>
+    [checked]="option.isSelected"/>
+    <span class="custom-checkbox"></span>
+  </label>
 </div>

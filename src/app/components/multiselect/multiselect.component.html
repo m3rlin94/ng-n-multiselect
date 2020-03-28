@@ -5,21 +5,17 @@
         <div class="tab">
           <input type="checkbox" id="check1" />
           <label class="tab-label" for="check1">
-            <div
-              *ngIf="
+            <div *ngIf="
                 selectedOptionsList.length > 0;
                 then showSelectedOptions;
                 else showLabelOnly
-              "
-            ></div>
+              "></div>
             <ng-template #showSelectedOptions>
-              <span
-                *ngFor="
+              <span *ngFor="
                   let option of selectedOptionsList;
                   index as index;
                   trackBy: trackByOptionKey
-                "
-              >
+                ">
                 {{ option.value }}
               </span>
             </ng-template>
@@ -29,30 +25,19 @@
           </label>
           <div class="tab-content">
             <div class="list-header">
-              <button
-                [disabled]="selectedOptionsList.length === data.length"
-                (click)="onSelectAll(true)"
-              >
+              <button [disabled]="selectedOptionsList.length === data.length" (click)="onSelectAll(true)">
                 Select All
               </button>
-              <button
-                [disabled]="selectedOptionsList.length === 0"
-                (click)="onSelectAll(false)"
-              >
+              <button [disabled]="selectedOptionsList.length === 0" (click)="onSelectAll(false)">
                 Select None
               </button>
             </div>
-            <div>
-              <app-listitem
-                *ngFor="
+            <div class="list-body">
+              <app-listitem *ngFor="
                   let option of optionsList;
                   index as index;
                   trackBy: trackByOptionKey
-                "
-                [option]="option"
-                [index]="index"
-                (toggleOption)="toggleOption($event)"
-              >
+                " [option]="option" [index]="index" (toggleOption)="toggleOption($event)">
               </app-listitem>
             </div>
           </div>
