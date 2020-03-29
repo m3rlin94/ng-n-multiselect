@@ -5,6 +5,7 @@ import { FuseService } from 'src/app/services/fuse.service';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { EventEmitter } from 'events';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-multiselect',
@@ -13,11 +14,13 @@ import { EventEmitter } from 'events';
 })
 export class MultiselectComponent implements OnInit {
   @Input() data: Option[];
+  @Input() showChips: boolean;
   selectedOptionsList: Option[] = [];
   optionsList: Option[] = [];
   optionsListCopy: Option[] = [];
   searchInput = '';
   searchInputChanged = new Subject<string>();
+  faTimes = faTimes;
 
   constructor(private searchService: FuseService) {
     this.searchInputChanged.pipe(debounceTime(500)).subscribe(this.onSearch);
