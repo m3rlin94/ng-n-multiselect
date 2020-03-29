@@ -6,7 +6,8 @@
           <input class="accordion" type="checkbox" id="check1" />
           <div class="tab-header">
             <label class="tab-label" for="check1">
-              <div
+              <div class="selected-items-container">
+                <div
                 *ngIf="
                   selectedOptionsList.length > 0;
                   then showSelectedOptions;
@@ -46,8 +47,10 @@
               <ng-template #showLabelOnly>
                 <span>Select an item</span>
               </ng-template>
+              </div>
+              <span class="caret"><fa-icon [icon]="faCaretDown" [classes]= "['caret']"></fa-icon></span>
             </label>
-            <span class="caret"><fa-icon [icon]="faCaretDown" [classes]="caret-icon"></fa-icon></span>
+            
           </div>
           <div class="tab-content">
             <div class="list-header">
