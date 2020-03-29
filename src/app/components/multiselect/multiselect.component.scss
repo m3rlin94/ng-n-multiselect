@@ -1,10 +1,12 @@
-@import "../../../assets/styles/variables";
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
 
 // General
 body {
   color: $main-text-colour;
   background: $main-body-colour;
   padding: 0 1em 1em;
+  font-family: $font-family;
 }
 
 h1 {
@@ -17,6 +19,7 @@ h2 {
   margin: 0 0 0.5em;
   font-weight: normal;
 }
+
 .accordion {
   position: absolute;
   opacity: 0;
@@ -39,7 +42,7 @@ h2 {
 /* Accordion styles */
 .tabs {
   overflow: hidden;
-  box-shadow: 0 4px 7px -2px $shadow-colour;
+  @include layout-box-shadow;
 }
 
 .tab {
@@ -47,31 +50,33 @@ h2 {
   color: white;
   overflow: hidden;
 
-  &-label {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em;
+  &-header {
     background: $main-text-colour;
-    font-weight: bold;
-    cursor: pointer;
-
-    /* Icon */
-    &:hover {
-      background: darken($main-text-colour, 10%);
+    height: 50px;
+    .tab-label {      
+      cursor: default;
+      display: inline-block;
+      padding:0;
+      margin: 15px;
+      position: relative;
+      width: 85%;
     }
 
     &::after {
-      content: "\276F";
-      width: 1em;
-      height: 1em;
+      content: "\25BE";
+      position: absolute;
       text-align: center;
       transition: all 0.35s;
+      margin: 0;
+      top: 3%;
+      right: 10%;
     }
   }
 
+
+
   &-content {
     max-height: 0;
-    padding: 0 1em;
     color: $main-text-colour;
     background: white;
     transition: all 0.35s;
@@ -104,23 +109,59 @@ h2 {
   }
 }
 
+
+
 // :checked
 input:checked {
-  + .tab-label {
-    background: darken($main-text-colour, 10%);
+  +.tab-header {
+    .tab-label {
+      width: 85%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
     &::after {
-      transform: rotate(90deg);
+      content: "\25B4";
     }
   }
 
-  ~ .tab-content {
+  ~.tab-content {
     max-height: 100vh;
-    padding: 1em 0;
+    padding: 5px;
   }
 }
 
-.search-input {
-  width: 200px;
-  height: 30px;
+.list-header {
+  .search {
+    padding: 0 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $main-border-colour;
+
+    .search-input {
+      width: 80%;
+      height: 30px;
+      padding: 2px 10px;
+      border: none;
+    }
+
+    button {
+      border: none;
+      width: 10%;
+      height: 35px;
+      background-color: $main-body-colour;
+      cursor: pointer;
+    }
+  }
+
+  .select-buttons {
+    & button {
+      @include button;
+
+      &:disabled {
+        @extend button;
+        @include button-disabled;
+      }
+    }
+  }
 }

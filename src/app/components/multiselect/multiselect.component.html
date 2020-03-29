@@ -4,7 +4,8 @@
       <div class="tabs">
         <div class="tab">
           <input class="accordion" type="checkbox" id="check1" />
-          <label class="tab-label" for="check1">
+          <div class="tab-header">
+            <label class="tab-label" for="check1">
             <div
               *ngIf="
                 selectedOptionsList.length > 0;
@@ -17,44 +18,27 @@
                 *ngFor="
                   let option of selectedOptionsList;
                   index as index;
-                  trackBy: trackByOptionKey
-                "
-              >
+                  trackBy: trackByOptionKey">
                 {{ option.value }}
               </span>
             </ng-template>
             <ng-template #showLabelOnly>
-              <span>Some default label</span>
+              <span>Select an item</span>
             </ng-template>
           </label>
+          </div>
           <div class="tab-content">
             <div class="list-header">
-              <input
-                type="text"
-                name="searchInput"
-                class="search-input"
-                placeholder="Search"
-                [(ngModel)]="searchInput"
-                (ngModelChange)="onSearchInputChanged($event)"
-              />
-              <button
-                (click)="onClearText()"
-                [disabled]="searchInput.length === 0"
-              >
-                Add 'X' icon here
-              </button>
-              <button
-                [disabled]="selectedOptionsList.length === data.length"
-                (click)="onSelectAll(true)"
-              >
-                Select All
-              </button>
-              <button
-                [disabled]="selectedOptionsList.length === 0"
-                (click)="onSelectAll(false)"
-              >
-                Select None
-              </button>
+              <div class="search">
+                <input type="text" name="searchInput" class="search-input" placeholder="Search" [(ngModel)]="searchInput"
+                (ngModelChange)="onSearchInputChanged($event)"/>
+              <button (click)="onClearText()" [disabled]="searchInput.length === 0">X</button>
+              </div>
+              <div class="select-buttons">
+                <button [disabled]="selectedOptionsList.length === data.length" (click)="onSelectAll(true)">Select All</button>
+                <button [disabled]="selectedOptionsList.length === 0" (click)="onSelectAll(false)">Select None</button>
+              </div>
+              
             </div>
             <div class="list-body">
               <app-listitem

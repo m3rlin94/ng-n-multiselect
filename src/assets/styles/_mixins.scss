@@ -1,0 +1,28 @@
+@import 'variables';
+
+@mixin layout-box-shadow {
+  box-shadow: 0 4px 7px -2px $shadow-colour;
+}
+
+@mixin element-box-shadow {
+  box-shadow: 1px 1px 3px 0px $shadow-colour;
+}
+
+@mixin button {
+  margin: 3px 10px;
+  padding: 7px 10px;
+  background-color: $main-body-colour;
+  border: 1px solid $disabled-colour;
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+  font-family: $font-family;
+  color: $main-text-colour;
+  @include element-box-shadow;
+}
+
+@mixin button-disabled {
+  cursor: not-allowed;
+  color: $disabled-colour;
+  box-shadow: none;
+}
