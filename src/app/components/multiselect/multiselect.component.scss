@@ -52,24 +52,17 @@ h2 {
 
   &-header {
     background: $main-text-colour;
-    height: 50px;
-    .tab-label {      
+    .tab-label {    
+      padding: 15px;  
       cursor: default;
       display: inline-block;
-      padding:0;
-      margin: 15px;
       position: relative;
-      width: 85%;
+      width: 90%;
     }
-
-    &::after {
-      content: "\25BE";
-      position: absolute;
+    .caret{
+      width: 10%;
+      float:right;
       text-align: center;
-      transition: all 0.35s;
-      margin: 0;
-      top: 3%;
-      right: 10%;
     }
   }
 
@@ -114,15 +107,19 @@ h2 {
 // :checked
 input:checked {
   +.tab-header {
+    overflow: hidden;
     .tab-label {
-      width: 85%;
+      width: 90%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      float: left;
     }
 
-    &::after {
-      content: "\25B4";
+    & .caret {
+    width: 10%;
+    float: right;
+    text-align: center;
     }
   }
 
@@ -137,20 +134,27 @@ input:checked {
     padding: 0 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid $main-border-colour;
-
+    overflow: hidden;
     .search-input {
-      width: 80%;
+      width: 90%;
       height: 30px;
-      padding: 2px 10px;
       border: none;
+      float: left;
     }
 
     button {
+      float: right;
       border: none;
       width: 10%;
       height: 35px;
       background-color: $main-body-colour;
       cursor: pointer;
+      padding: 0;
+      color: $main-text-colour;
+      &:disabled{
+        color: $disabled-colour;
+        cursor: not-allowed;
+      }
     }
   }
 
