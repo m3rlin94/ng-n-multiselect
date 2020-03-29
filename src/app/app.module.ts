@@ -1,25 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FusejsPipe } from 'src/app/services/search/Fuse.pipe';
-import { Search } from 'src/app/services/search/Search';
+import { FuseService } from 'src/app/services/fuse.service';
 
 import { AppComponent } from './app.component';
 import { MultiselectComponent } from './components/multiselect/multiselect.component';
 import { ListitemComponent } from './components/listitem/listitem.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MultiselectComponent,
-    ListitemComponent,
-    FusejsPipe
-  ],
+  declarations: [AppComponent, MultiselectComponent, ListitemComponent],
   imports: [BrowserModule, FormsModule],
-  providers: [Search],
-  bootstrap: [AppComponent],
-  exports: [FusejsPipe]
+  providers: [FuseService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
-export * from 'src/app/services/search/Search';
-export * from 'src/app/services/search/Fuse.pipe';
+export * from 'src/app/services/fuse.service';

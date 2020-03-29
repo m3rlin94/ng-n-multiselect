@@ -32,11 +32,17 @@
               <input
                 type="text"
                 name="searchInput"
-                [(ngModel)]="searchInput"
-                placeholder="Search"
                 class="search-input"
-                (input)="onSearch()"
+                placeholder="Search"
+                [(ngModel)]="searchInput"
+                (ngModelChange)="onSearchInputChanged($event)"
               />
+              <button
+                (click)="onClearText()"
+                [disabled]="searchInput.length === 0"
+              >
+                Add 'X' icon here
+              </button>
               <button
                 [disabled]="selectedOptionsList.length === data.length"
                 (click)="onSelectAll(true)"

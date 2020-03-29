@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "classlist.js": "^1.1.20150312",
-    "fuse.js": "^5.0.10-beta",
+    "fuzzy-search": "^3.2.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
