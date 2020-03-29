@@ -6,39 +6,81 @@
           <input class="accordion" type="checkbox" id="check1" />
           <div class="tab-header">
             <label class="tab-label" for="check1">
-            <div
-              *ngIf="
-                selectedOptionsList.length > 0;
-                then showSelectedOptions;
-                else showLabelOnly
-              "
-            ></div>
-            <ng-template #showSelectedOptions>
-              <span
-                *ngFor="
-                  let option of selectedOptionsList;
-                  index as index;
-                  trackBy: trackByOptionKey">
-                {{ option.value }}
-              </span>
-            </ng-template>
-            <ng-template #showLabelOnly>
-              <span>Select an item</span>
-            </ng-template>
-          </label>
+              <div
+                *ngIf="
+                  selectedOptionsList.length > 0;
+                  then showSelectedOptions;
+                  else showLabelOnly
+                "
+              ></div>
+              <ng-template #showSelectedOptions>
+                <div
+                  *ngIf="showChips; then showChipsList; else showNormalList"
+                ></div>
+                <ng-template #showNormalList>
+                  <span
+                    *ngFor="
+                      let option of selectedOptionsList;
+                      index as index;
+                      trackBy: trackByOptionKey
+                    "
+                  >
+                    {{ option.value
+                    }}<span *ngIf="index < selectedOptionsList.length - 1"
+                      >,</span
+                    >
+                  </span>
+                </ng-template>
+                <ng-template #showChipsList>
+                  <app-chip
+                    *ngFor="
+                      let option of selectedOptionsList;
+                      index as index;
+                      trackBy: trackByOptionKey
+                    "
+                    [value]="option.value"
+                  >
+                  </app-chip>
+                </ng-template>
+              </ng-template>
+              <ng-template #showLabelOnly>
+                <span>Select an item</span>
+              </ng-template>
+            </label>
+            <span class="caret"><fa-icon [icon]="faCaretDown" [classes]="caret-icon"></fa-icon></span>
           </div>
           <div class="tab-content">
             <div class="list-header">
               <div class="search">
-                <input type="text" name="searchInput" class="search-input" placeholder="Search" [(ngModel)]="searchInput"
-                (ngModelChange)="onSearchInputChanged($event)"/>
-              <button (click)="onClearText()" [disabled]="searchInput.length === 0">X</button>
+                <input
+                  type="text"
+                  name="searchInput"
+                  class="search-input"
+                  placeholder="Search"
+                  [(ngModel)]="searchInput"
+                  (ngModelChange)="onSearchInputChanged($event)"
+                />
+                <button
+                  (click)="onClearText()"
+                  [disabled]="searchInput.length === 0"
+                >
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </button>
               </div>
               <div class="select-buttons">
-                <button [disabled]="selectedOptionsList.length === data.length" (click)="onSelectAll(true)">Select All</button>
-                <button [disabled]="selectedOptionsList.length === 0" (click)="onSelectAll(false)">Select None</button>
+                <button
+                  [disabled]="selectedOptionsList.length === data.length"
+                  (click)="onSelectAll(true)"
+                >
+                  Select All
+                </button>
+                <button
+                  [disabled]="selectedOptionsList.length === 0"
+                  (click)="onSelectAll(false)"
+                >
+                  Select None
+                </button>
               </div>
-              
             </div>
             <div class="list-body">
               <app-listitem

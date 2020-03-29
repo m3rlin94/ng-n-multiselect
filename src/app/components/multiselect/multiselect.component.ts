@@ -2,9 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Option } from 'src/app/models/Option';
 import { EmitType } from 'src/app/models/EmitOption';
 import { FuseService } from 'src/app/services/fuse.service';
-import { Subject } from 'rxjs';
+import { Subject, from } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { EventEmitter } from 'events';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-multiselect',
@@ -13,11 +16,15 @@ import { EventEmitter } from 'events';
 })
 export class MultiselectComponent implements OnInit {
   @Input() data: Option[];
+  @Input() showChips: boolean;
   selectedOptionsList: Option[] = [];
   optionsList: Option[] = [];
   optionsListCopy: Option[] = [];
   searchInput = '';
   searchInputChanged = new Subject<string>();
+  faTimes = faTimes;
+  faCaretDown = faCaretDown;
+  faCaretUp = faCaretUp;
 
   constructor(private searchService: FuseService) {
     this.searchInputChanged.pipe(debounceTime(500)).subscribe(this.onSearch);

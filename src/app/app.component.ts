@@ -7,47 +7,14 @@ import { Option } from 'src/app/models/Option';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  optionsList: Option[] = [
-    {
-      key: 'one',
-      value: 'one'
-    },
-    {
-      key: 'two',
-      value: 'two'
-    },
-    {
-      key: 'three',
-      value: 'three'
-    },
-    {
-      key: 'four',
-      value: 'four'
-    },
-    {
-      key: 'five',
-      value: 'five'
-    },
-    {
-      key: 'six',
-      value: 'six'
-    },
-    {
-      key: 'seven',
-      value: 'seven'
-    },
+  optionsList: Option[] = [];
 
-    {
-      key: 'eight',
-      value: 'eight'
-    },
-    {
-      key: 'nine',
-      value: 'nine'
-    },
-    {
-      key: 'ten',
-      value: 'ten'
+  constructor() {
+    for (let i = 1; i < 10; i++) {
+      this.optionsList.push({
+        key: i.toString(),
+        value: i.toString()
+      });
     }
-  ];
+  }
 }
